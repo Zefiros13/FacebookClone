@@ -10,13 +10,10 @@ namespace FacebookClone.Models
     {
         public int Id { get; set; }
 
-        [Required]
         public Friendship Friendship { get; set; }
 
-        [Required]
         public ApplicationUser MessageSender { get; set; }
 
-        [Required]
         public ApplicationUser MessageReceiver { get; set; }
 
         [Required]

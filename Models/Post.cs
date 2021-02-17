@@ -14,7 +14,6 @@ namespace FacebookClone.Models
         [StringLength(50)]
         public string Title { get; set; }
 
-        [Required]
         public ApplicationUser Creator { get; set; }
 
         public string Path { get; set; }

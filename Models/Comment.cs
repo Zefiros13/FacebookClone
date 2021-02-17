@@ -14,10 +14,8 @@ namespace FacebookClone.Models
         [StringLength(500)]
         public string Content { get; set; }
 
-        [Required]
         public Post Post { get; set; }
 
-        [Required]
         public ApplicationUser CommentCreator { get; set; }
     }
 }

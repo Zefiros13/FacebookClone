@@ -17,8 +17,6 @@ namespace FacebookClone.Models
 
         public string ProfilePicturePath { get; set; }
 
-        public List<Post> Posts { get; set; }
-
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -35,7 +33,13 @@ namespace FacebookClone.Models
         {
         }
 
+        public DbSet<Post> Posts { get; set; }
 
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<Message> Messages { get; set; }
+
+        public DbSet<Friendship> Friendships { get; set; }
 
         public static ApplicationDbContext Create()
         {

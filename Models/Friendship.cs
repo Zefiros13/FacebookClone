@@ -11,10 +11,8 @@ namespace FacebookClone.Models
     {
         public int Id { get; set; }
 
-        [Required]
         public ApplicationUser Sender { get; set; }
 
-        [Required]
         public ApplicationUser Receiver { get; set; }
 
         public bool WaitingFlag { get; set; }
