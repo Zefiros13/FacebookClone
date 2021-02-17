@@ -28,12 +28,5 @@ namespace FacebookClone.Models
         public bool SpamFlag { get; set; }
 
         public DateTime DateCreated { get; set; }
-
-        public List<Message> Messages { get; set; }
-
-        public Friendship()
-        {
-            Messages = new List<Message>();
-        }
     }
 }
