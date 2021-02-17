@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -9,8 +11,10 @@ namespace FacebookClone.Models
     {
         public int Id { get; set; }
 
+        [Required]
         public ApplicationUser Sender { get; set; }
 
+        [Required]
         public ApplicationUser Receiver { get; set; }
 
         public bool WaitingFlag { get; set; }

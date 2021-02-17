@@ -33,6 +33,7 @@ namespace FacebookClone.Models
         public Post()
         {
             Comments = new List<Comment>();
+            LikeCount = 0;
         }
     }
 }
