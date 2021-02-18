@@ -21,7 +21,7 @@ namespace FacebookClone.Repositories
 
         public IEnumerable<Post> GetByUserId(string usersId)
         {
-            return _context.Posts.Where(p => p.Creator.Id == usersId) ;
+            return _context.Posts.Where(p => p.Creator.Id == usersId);
         }
 
         public Post GetById(int id)

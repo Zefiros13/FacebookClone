@@ -13,7 +13,7 @@ namespace FacebookClone.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202102172033042_AddingTables"; }
+            get { return "202102182110597_AddingTables"; }
         }
         
         string IMigrationMetadata.Source

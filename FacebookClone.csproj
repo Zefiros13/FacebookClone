@@ -224,9 +224,9 @@
     </Compile>
     <Compile Include="Interfaces\IPostRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
-    <Compile Include="Migrations\202102172033042_AddingTables.cs" />
-    <Compile Include="Migrations\202102172033042_AddingTables.Designer.cs">
-      <DependentUpon>202102172033042_AddingTables.cs</DependentUpon>
+    <Compile Include="Migrations\202102182110597_AddingTables.cs" />
+    <Compile Include="Migrations\202102182110597_AddingTables.Designer.cs">
+      <DependentUpon>202102182110597_AddingTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -335,8 +335,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102172033042_AddingTables.resx">
-      <DependentUpon>202102172033042_AddingTables.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102182110597_AddingTables.resx">
+      <DependentUpon>202102182110597_AddingTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
