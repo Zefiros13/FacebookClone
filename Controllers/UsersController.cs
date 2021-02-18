@@ -56,7 +56,7 @@ namespace FacebookClone.Controllers
         }
 
         //DELETE api/users/{id}
-        public IHttpActionResult Deleteuser(string id)
+        public IHttpActionResult DeleteUser(string id)
         {
             var user = _repository.GetById(id);
 

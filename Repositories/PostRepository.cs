@@ -2,6 +2,8 @@
 using FacebookClone.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 
@@ -13,33 +15,43 @@ namespace FacebookClone.Repositories
 
         public IEnumerable<Post> GetAll()
         {
-            return new List<Post>();
+            return _context.Posts;
         }
 
         public IEnumerable<Post> GetByUserId(string usersId)
         {
-            return new List<Post>();
-
+            return _context.Posts.Where(p => p.Creator.Id == usersId) ;
         }
 
         public Post GetById(int id)
         {
-            return new Post();
+            return _context.Posts.SingleOrDefault(p => p.Id == id);
         }
 
         public void Create(Post post)
         {
-
+            _context.Posts.Add(post);
+            _context.SaveChanges();
         }
 
         public void Update(Post post)
         {
+            _context.Entry(post).State = EntityState.Modified;
 
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw;
+            }
         }
 
         public void Delete(Post post)
         {
-
+            _context.Posts.Remove(post);
+            _context.SaveChanges();
         }
 
         protected void Dispose(bool disposing)
