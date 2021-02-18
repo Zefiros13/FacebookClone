@@ -15,3 +15,8 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.facePlavo {
+    color: white;
+    background-color: dodgerblue;
+}

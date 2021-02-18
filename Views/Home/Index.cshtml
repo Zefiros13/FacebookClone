@@ -1,24 +1,61 @@
-﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+﻿
+<div class="row" style="margin: 0 auto;">
+    <p id="LoginMessage">You are not logged in</p>
+    <button class="btn btn-primary facePlavo m-2" id="btnLoginOrRegister">Log in or Register</button>
+    <br /><br /><br />
+    <button class="btn btn-primary m-2" id="btnLogOut">Logout</button>
 </div>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+
+<div id="sve">
+    <div class="row">
+        <div id="divLogin" style="margin: 0 auto;">
+            <h3>Login</h3>
+            <p id="message"></p>
+            <form method="post" action="post/" id="loginForm">
+                <label>Email:</label><br />
+                <input type="text" id="loginEmail" /><br />
+                <label>Password:</label><br />
+                <input type="password" id="loginPassword" /><br /> <br />
+                <button type="submit" class="btn btn-primary facePlavo">Login</button>
+                <br />
+                <br />
+                <button type="reset" class="btn btn-primary" id="cancelLog">Cancel</button>
+            </form>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
+
+    <div class="row">
+        <div id="divRegistration" style="margin: 0 auto;">
+            <h3>Registration</h3>
+            <form method="post" action="post/" id="registerForm">
+                <label>Email:</label><br />
+                <input type="text" id="registerEmail" /><br />
+                <label>Password:</label><br />
+                <input type="password" id="registerPassword" /><br />
+                <label>Confirm Password:</label><br />
+                <input type="password" id="confirmPassword" /><br />
+                <br />
+                <button type="submit" class="btn btn-primary facePlavo">Register</button>
+                <br />
+                <br />
+                <button type="reset" class="btn btn-primary" id="cancelReg">Cancel</button>
+            </form>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
+
+    <div class="row">
+        <div class="form-inline" id="LoginOrRegisterDiv" style="margin: 0 auto;">
+            <button style="margin:5px;" class="btn btn-primary facePlavo" id="btnLogin">Login</button>
+            <br />
+            <br />
+            <button style="margin:5px;" class="btn btn-primary facePlavo" id="btnRegister">Registration</button>
+        </div>
     </div>
+
 </div>
+
+@section scripts
+{
+    <link href="~/Content/Site.css" />
+    <script src="~/Scripts/LoginRegisterAndLogout.js"></script>
+}

@@ -1,5 +1,6 @@
 ﻿using FacebookClone.Interfaces;
 using FacebookClone.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -30,6 +31,7 @@ namespace FacebookClone.Repositories
 
         public void Create(Post post)
         {
+            post.Creator = _context.Users.SingleOrDefault(u => u.Id == HttpContext.Current.User.Identity.GetUserId());
             _context.Posts.Add(post);
             _context.SaveChanges();
         }
