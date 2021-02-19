@@ -6,6 +6,7 @@ using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 using System.Net.Http.Headers;
+using System.Web.Http.Cors;
 
 namespace FacebookClone
 {
@@ -28,6 +29,9 @@ namespace FacebookClone
             );
 
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+
+            //later maybe speciffy domains
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
         }
     }
 }
