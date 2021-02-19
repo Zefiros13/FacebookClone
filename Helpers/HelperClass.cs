@@ -26,5 +26,7 @@ namespace FacebookClone.Helpers
         //CommentRepository: comment.Post = GetCurrentPost?
         //FriendshipRepository: friendship.Receiver = Get user from current URL
         //MessageRepository: message.MessageReceiver = GetMessageReceiver?
+
+        //Full change of model to add Collections (add List<Post> and List<Friendship> to ApplicationUser etc.) to allow Eager loading
     }
 }
