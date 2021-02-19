@@ -76,6 +76,25 @@ namespace FacebookClone.Repositories
             _context.SaveChanges();
         }
 
+        public string SavePost()
+        {
+            try
+            {
+                HttpRequest httpRequest = HttpContext.Current.Request;
+                var post = httpRequest.Files[0]; // Uploading only first picture in case multiple pictures are selected
+                string postName = post.FileName;
+                string physicalPath = HttpContext.Current.Server.MapPath("~/Media/Photos/" + postName);
+
+                post.SaveAs(physicalPath);
+
+                return postName;
+            }
+            catch (Exception)
+            {
+                return "anonymous.png";
+            }
+        }
+
         protected void Dispose(bool disposing)
         {
             if (disposing)

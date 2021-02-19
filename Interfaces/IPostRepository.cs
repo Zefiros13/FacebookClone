@@ -16,5 +16,6 @@ namespace FacebookClone.Interfaces
         void Create(Post post);
         void Update(Post post);
         void Delete(Post post);
+        string SavePost();
     }
 }

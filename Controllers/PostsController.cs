@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace FacebookClone.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class PostsController : ApiController
     {
         IPostRepository _repository { get; set; }
@@ -98,6 +99,12 @@ namespace FacebookClone.Controllers
             _repository.Delete(post);
 
             return Ok();
+        }
+
+        [Route("api/Posts/SavePost")]
+        public string SavePost()
+        {
+            return _repository.SavePost();
         }
     }
 }
