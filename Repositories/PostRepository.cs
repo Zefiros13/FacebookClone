@@ -19,6 +19,25 @@ namespace FacebookClone.Repositories
             return _context.Posts;
         }
 
+        public IEnumerable<Post> GetCurrentUsersFriendsPosts()
+        {
+            //Refactor to static class and methods
+            List<Post> allFriendsPosts = new List<Post>();
+            ApplicationUser currentUser = _context.Users.SingleOrDefault(u => u.Id == HttpContext.Current.User.Identity.GetUserId());
+            List<Friendship> currentUsersFriendships = _context.Friendships.Where(f => f.Sender.Id == currentUser.Id || f.Receiver.Id == currentUser.Id).ToList();
+            
+            foreach (Friendship friendship in currentUsersFriendships)
+            {
+                var posts = _context.Posts.Where(p => p.Creator.Id == friendship.Sender.Id || p.Creator.Id == friendship.Receiver.Id);
+                foreach (Post post in posts)
+                {
+                    allFriendsPosts.Add(post);
+                } 
+            }
+
+            return allFriendsPosts;
+        }
+
         public IEnumerable<Post> GetByUserId(string usersId)
         {
             return _context.Posts.Where(p => p.Creator.Id == usersId);

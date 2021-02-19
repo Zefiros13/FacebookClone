@@ -10,6 +10,7 @@ namespace FacebookClone.Interfaces
     public interface IPostRepository
     {
         IEnumerable<Post> GetAll();
+        IEnumerable<Post> GetCurrentUsersFriendsPosts();
         IEnumerable<Post> GetByUserId(string usersId);
         Post GetById(int id);
         void Create(Post post);

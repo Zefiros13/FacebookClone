@@ -19,9 +19,16 @@ namespace FacebookClone.Controllers
         }
 
         //GET api/posts
+        //Delete if not needed, because of route conflict or change route
         public IEnumerable<Post> GetAll()
         {
             return _repository.GetAll();
+        }
+
+        //GET api/posts
+        public IEnumerable<Post> GetCurrentUsersFriendsPosts()
+        {
+            return _repository.GetCurrentUsersFriendsPosts();
         }
 
         //GET api/posts/?userId="str"
