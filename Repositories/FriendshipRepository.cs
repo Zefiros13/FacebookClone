@@ -1,4 +1,5 @@
-﻿using FacebookClone.Interfaces;
+﻿using FacebookClone.Helpers;
+using FacebookClone.Interfaces;
 using FacebookClone.Models;
 using Microsoft.AspNet.Identity;
 using System;
@@ -11,10 +12,12 @@ namespace FacebookClone.Repositories
     public class FriendshipRepository : IDisposable, IFriendshipRepository
     {
         private ApplicationDbContext _context = new ApplicationDbContext();
+        string currentUsersId = HelperClass.GetCurrentUsersId();
 
         public IEnumerable<Friendship> GetUsersFriendships()
         {
-            return _context.Friendships.Where(f => f.Sender.Id == HttpContext.Current.User.Identity.GetUserId() || f.Receiver.Id == HttpContext.Current.User.Identity.GetUserId());
+            return _context.Friendships.Where(f => f.Sender.Id == currentUsersId 
+                                                || f.Receiver.Id == currentUsersId);
         }
 
         public IEnumerable<Friendship> GetByUsersId(string id)
@@ -29,7 +32,7 @@ namespace FacebookClone.Repositories
 
         public void Create(Friendship friendship)
         {
-            friendship.Sender = _context.Users.SingleOrDefault(u => u.Id == HttpContext.Current.User.Identity.GetUserId());
+            friendship.Sender = HelperClass.GetCurrentUser();
             //TO DO
             //friendship.Receiver = Get user from current URL
             _context.Friendships.Add(friendship);

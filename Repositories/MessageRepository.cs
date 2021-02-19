@@ -1,4 +1,5 @@
-﻿using FacebookClone.Interfaces;
+﻿using FacebookClone.Helpers;
+using FacebookClone.Interfaces;
 using FacebookClone.Models;
 using Microsoft.AspNet.Identity;
 using System;
@@ -24,7 +25,9 @@ namespace FacebookClone.Repositories
 
         public void Create(Message message)
         {
-            message.MessageSender = _context.Users.SingleOrDefault(u => u.Id == HttpContext.Current.User.Identity.GetUserId());
+            message.MessageSender = HelperClass.GetCurrentUser();
+            //TO DO
+            //message.MessageReceiver = GetMessageReceiver?
             _context.Messages.Add(message);
             _context.SaveChanges();
         }

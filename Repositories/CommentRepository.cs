@@ -1,4 +1,5 @@
-﻿using FacebookClone.Interfaces;
+﻿using FacebookClone.Helpers;
+using FacebookClone.Interfaces;
 using FacebookClone.Models;
 using Microsoft.AspNet.Identity;
 using System;
@@ -26,7 +27,7 @@ namespace FacebookClone.Repositories
 
         public void Create(Comment comment)
         {
-            comment.CommentCreator = _context.Users.SingleOrDefault(u => u.Id == HttpContext.Current.User.Identity.GetUserId());
+            comment.CommentCreator = HelperClass.GetCurrentUser();
             //TO DO
             //comment.Post = GetCurrentPost?
             _context.Comments.Add(comment);
