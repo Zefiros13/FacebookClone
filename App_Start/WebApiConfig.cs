@@ -7,6 +7,11 @@ using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 using System.Net.Http.Headers;
 using System.Web.Http.Cors;
+using Unity;
+using FacebookClone.Interfaces;
+using FacebookClone.Repositories;
+using Unity.Lifetime;
+using FacebookClone.Resolver;
 
 namespace FacebookClone
 {
@@ -27,6 +32,14 @@ namespace FacebookClone
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            var container = new UnityContainer();
+            container.RegisterType<IPostRepository, PostRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<ICommentRepository, CommentRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IFriendshipRepository, FriendshipRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IMessageRepository, MessageRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IUserRepository, UserRepository>(new HierarchicalLifetimeManager());
+            config.DependencyResolver = new UnityResolver(container);
 
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 
