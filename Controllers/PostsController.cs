@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace FacebookClone.Controllers
 {
+    [Authorize]
     public class PostsController : ApiController
     {
         IPostRepository _repository { get; set; }
@@ -20,6 +21,7 @@ namespace FacebookClone.Controllers
 
         //GET api/posts
         //Delete if not needed, because of route conflict or change route
+        [AllowAnonymous]
         public IEnumerable<Post> GetAll()
         {
             return _repository.GetAll();
@@ -32,12 +34,14 @@ namespace FacebookClone.Controllers
         }
 
         //GET api/posts/?userId="str"
+        [AllowAnonymous] //Maybe bad idea
         public IEnumerable<Post> GetPostByUserId(string userId)
         {
             return _repository.GetByUserId(userId);
         }
 
         //GET api/posts/{id}
+        [AllowAnonymous] //Maybe bad idea
         public Post GetPostById(int id)
         {
             return _repository.GetById(id);

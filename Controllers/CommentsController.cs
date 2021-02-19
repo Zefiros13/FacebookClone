@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace FacebookClone.Controllers
 {
+    [Authorize]
     public class CommentsController : ApiController
     {
         ICommentRepository _repository { get; set; }
@@ -19,6 +20,7 @@ namespace FacebookClone.Controllers
         }
 
         //GET api/comments/?postId="int"
+        [AllowAnonymous] //Maybe bad idea,depends on Post privacy
         public IEnumerable<Comment> GetByPostId(int postId)
         {
             return _repository.GetCommentsByPostId(postId);

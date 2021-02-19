@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace FacebookClone.Controllers
 {
+    [Authorize]
     public class MessagesController : ApiController
     {
         IMessageRepository _repository { get; set; }
